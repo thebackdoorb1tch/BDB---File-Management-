@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Backdoorb1tch's Files</title>
-  <!-- Hacker font from Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <title>BDB File Management</title>
+  <!-- Elegant and happy font inspired by Neal.fun -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Press Start 2P', cursive; /* Hacker font */
-      background: #000; /* Dark background */
-      color: #00FF00; /* Green text color */
+      font-family: 'Poppins', sans-serif;
+      background: #f4f4f9;
+      color: #333;
       margin: 0;
       padding: 0;
       display: flex;
@@ -21,93 +21,268 @@
       font-size: 16px;
     }
 
-    /* Header styling */
     header {
       width: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      padding: 20px;
+      background: #007bff;
+      padding: 30px 20px;
       text-align: center;
-      font-size: 1.5em;
-      font-weight: bold;
-      letter-spacing: 3px;
-      color: #00FF00;
-      border-bottom: 2px solid #00FF00;
-      text-shadow: 0 0 5px #00FF00;
+      font-size: 1.8em;
+      font-weight: 600;
+      color: #fff;
+      border-bottom: 3px solid #0056b3;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
       position: relative;
     }
 
-    header .version {
-      font-size: 0.8em;
-      color: #888;
-      font-weight: normal;
-      margin-top: 5px;
-      letter-spacing: 1px;
-    }
-
-    /* Smaller admin login button in the top-right corner */
-    #adminLoginButton {
-      position: absolute;
-      top: 50%;
-      right: 20px;
-      transform: translateY(-50%);
-      background: transparent;
-      border: 1px solid #00FF00;
-      color: #00FF00;
-      font-size: 0.8em; /* Smaller font size */
-      padding: 5px 10px; /* Smaller padding */
-      cursor: pointer;
-      font-weight: normal;
-      transition: all 0.3s ease;
-    }
-
-    #adminLoginButton:hover {
-      background: #00FF00;
-      color: #000;
-    }
-
-    h1, h2 {
-      font-size: 2.5em;
-      font-weight: 600;
-      color: #00FF00;
-      text-align: center;
-      margin-bottom: 30px;
-      letter-spacing: 3px;
-      text-shadow: 0 0 5px #00FF00, 0 0 10px #00FF00;
-    }
-
     .container {
-      background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+      background: rgba(255, 255, 255, 0.9);
       width: 100%;
-      max-width: 600px;
+      max-width: 800px;
       padding: 30px;
       border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       text-align: center;
     }
 
-    input[type="password"], input[type="file"], button {
-      width: 100%;
+    h1 {
+      font-size: 2.5em;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .file-upload {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    input[type="file"] {
       padding: 15px;
-      margin: 10px 0;
+      font-size: 1em;
+      border-radius: 8px;
+      border: 1px solid #007bff;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .admin-login {
+      margin-top: 20px;
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+
+    .admin-login input {
+      padding: 15px;
       font-size: 1.1em;
       border-radius: 8px;
+      border: 1px solid #007bff;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .admin-login button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 1.1em;
+      border-radius: 8px;
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .admin-login button:hover {
+      background: #0056b3;
+    }
+
+    /* Admin button */
+    #adminButton {
+      padding: 10px 20px;
+      font-size: 1.1em;
+      border-radius: 20px;
+      background: #007bff;
+      color: white;
+      border: 2px solid #000; /* Black outline */
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 20px; /* Move button below the header */
+    }
+
+    #adminButton:hover {
+      background: #0056b3;
+    }
+
+    /* Admin window styling */
+    .admin-window {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      display: none;
+      z-index: 1000;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .admin-window h2 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      color: #007bff;
+    }
+
+    .admin-window input {
+      padding: 15px;
+      font-size: 1.1em;
+      border-radius: 8px;
+      border: 1px solid #007bff;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .admin-window button {
+      padding: 12px 25px;
+      font-size: 1.2em;
+      border-radius: 8px;
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
+    }
+
+    .admin-window button:hover {
+      background: #0056b3;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ff4c4c;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      background: #ff0000;
+    }
+
+    /* File list styling */
+    .file-list {
+      margin-top: 30px;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .file-item {
+      background: #fff;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: left;
+    }
+
+    .file-item a {
+      color: #007bff;
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+
+    .file-item a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
+
   <header>
-    Backdoorb1tch's Files
-    <div class="version">v1.0</div>
-    <button id="adminLoginButton">Admin Login</button>
+    BDB File Management
   </header>
+
+  <button id="adminButton" onclick="openAdminWindow()">Admin</button>
+
   <main class="container">
-    <h1>Access Denied</h1>
-    <h2>Restricted Area</h2>
-    <form>
-      <input type="password" placeholder="Enter password" required>
-      <input type="file" accept=".txt,.doc,.pdf">
-      <button type="submit">Submit</button>
-    </form>
+    <h1>Upload and Manage Files</h1>
+    <div class="file-upload">
+      <input type="file" id="fileInput" disabled />
+    </div>
+
+    <!-- Display uploaded files -->
+    <div class="file-list" id="fileList">
+      <h2>Uploaded Files</h2>
+      <!-- Dynamically added files will appear here -->
+    </div>
   </main>
+
+  <!-- Admin login window -->
+  <div class="admin-window" id="adminWindow">
+    <button class="close-btn" onclick="closeAdminWindow()">X</button>
+    <h2>Admin Login</h2>
+    <input type="password" placeholder="Enter admin password" id="adminPassword" />
+    <button onclick="adminLogin()">Login</button>
+  </div>
+
+  <script>
+    // Track uploaded files
+    const uploadedFiles = [];
+
+    function openAdminWindow() {
+      document.getElementById('adminWindow').style.display = 'block';
+    }
+
+    function closeAdminWindow() {
+      document.getElementById('adminWindow').style.display = 'none';
+    }
+
+    function adminLogin() {
+      const password = document.getElementById('adminPassword').value;
+      if (password === 'admin123') {
+        alert('Access granted! You can now upload files.');
+        document.getElementById('fileInput').disabled = false; // Enable file input for admin
+        closeAdminWindow();
+      } else {
+        alert('Incorrect password. Try again.');
+      }
+    }
+
+    // Handle file upload
+    document.getElementById('fileInput').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        uploadedFiles.push(file);
+        displayUploadedFiles();
+      }
+    });
+
+    // Display uploaded files
+    function displayUploadedFiles() {
+      const fileListContainer = document.getElementById('fileList');
+      fileListContainer.innerHTML = '<h2>Uploaded Files</h2>';
+      
+      uploadedFiles.forEach(file => {
+        const fileItem = document.createElement('div');
+        fileItem.classList.add('file-item');
+        const fileLink = document.createElement('a');
+        fileLink.href = URL.createObjectURL(file);
+        fileLink.download = file.name;
+        fileLink.textContent = file.name;
+        fileItem.appendChild(fileLink);
+        fileListContainer.appendChild(fileItem);
+      });
+    }
+  </script>
+
 </body>
 </html>
