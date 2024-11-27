@@ -1,39 +1,113 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jack Loves Niamh</title>
+  <title>Backdoorb1tch's Files</title>
+  <!-- Hacker font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
-    body { margin: 0; overflow: hidden; cursor: pointer; }
-    .message {
-      position: absolute;
-      font-size: 20px;
-      font-weight: bold;
-      animation: colorChange 2s infinite linear;
-      pointer-events: none;
+    body {
+      font-family: 'Press Start 2P', cursive; /* Hacker font */
+      background: #000; /* Dark background */
+      color: #00FF00; /* Green text color */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      font-size: 16px;
     }
-    @keyframes colorChange {
-      0% { color: red; }
-      20% { color: orange; }
-      40% { color: yellow; }
-      60% { color: green; }
-      80% { color: blue; }
-      100% { color: purple; }
+
+    /* Header styling */
+    header {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      text-align: center;
+      font-size: 1.5em;
+      font-weight: bold;
+      letter-spacing: 3px;
+      color: #00FF00;
+      border-bottom: 2px solid #00FF00;
+      text-shadow: 0 0 5px #00FF00;
+      position: relative;
+    }
+
+    header .version {
+      font-size: 0.8em;
+      color: #888;
+      font-weight: normal;
+      margin-top: 5px;
+      letter-spacing: 1px;
+    }
+
+    /* Smaller admin login button in the top-right corner */
+    #adminLoginButton {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      background: transparent;
+      border: 1px solid #00FF00;
+      color: #00FF00;
+      font-size: 0.8em; /* Smaller font size */
+      padding: 5px 10px; /* Smaller padding */
+      cursor: pointer;
+      font-weight: normal;
+      transition: all 0.3s ease;
+    }
+
+    #adminLoginButton:hover {
+      background: #00FF00;
+      color: #000;
+    }
+
+    h1, h2 {
+      font-size: 2.5em;
+      font-weight: 600;
+      color: #00FF00;
+      text-align: center;
+      margin-bottom: 30px;
+      letter-spacing: 3px;
+      text-shadow: 0 0 5px #00FF00, 0 0 10px #00FF00;
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+      width: 100%;
+      max-width: 600px;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      text-align: center;
+    }
+
+    input[type="password"], input[type="file"], button {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      font-size: 1.1em;
+      border-radius: 8px;
     }
   </style>
 </head>
 <body>
-  <script>
-    document.addEventListener("click", (e) => {
-      const message = document.createElement("div");
-      message.className = "message";
-      message.style.left = `${e.pageX}px`;
-      message.style.top = `${e.pageY}px`;
-      message.textContent = "Jack loves Niamh";
-      document.body.appendChild(message);
-      setTimeout(() => message.remove(), 1000);
-    });
-  </script>
+  <header>
+    Backdoorb1tch's Files
+    <div class="version">v1.0</div>
+    <button id="adminLoginButton">Admin Login</button>
+  </header>
+  <main class="container">
+    <h1>Access Denied</h1>
+    <h2>Restricted Area</h2>
+    <form>
+      <input type="password" placeholder="Enter password" required>
+      <input type="file" accept=".txt,.doc,.pdf">
+      <button type="submit">Submit</button>
+    </form>
+  </main>
 </body>
 </html>
