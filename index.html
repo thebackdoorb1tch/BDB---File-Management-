@@ -26,7 +26,7 @@
       background: #007bff;
       padding: 30px 20px;
       text-align: center;
-      font-size: 1.8em;
+      font-size: 2.5em;
       font-weight: 600;
       color: #fff;
       border-bottom: 3px solid #0056b3;
@@ -42,6 +42,7 @@
       border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       text-align: center;
+      margin-top: 40px;
     }
 
     h1 {
@@ -108,7 +109,7 @@
       border: 2px solid #000; /* Black outline */
       cursor: pointer;
       transition: background 0.3s;
-      margin-top: 20px; /* Move button below the header */
+      margin-top: 20px;
     }
 
     #adminButton:hover {
@@ -183,15 +184,18 @@
       margin-top: 30px;
       width: 100%;
       max-width: 800px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      justify-content: center;
     }
 
     .file-item {
       background: #fff;
       padding: 15px;
-      margin: 10px 0;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      text-align: left;
+      text-align: center;
     }
 
     .file-item a {
@@ -203,6 +207,20 @@
     .file-item a:hover {
       text-decoration: underline;
     }
+
+    .file-item img {
+      width: 100%;
+      max-width: 150px;
+      margin-bottom: 10px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .file-item p {
+      font-size: 1.1em;
+      color: #555;
+    }
+
   </style>
 </head>
 <body>
@@ -274,9 +292,18 @@
       uploadedFiles.forEach(file => {
         const fileItem = document.createElement('div');
         fileItem.classList.add('file-item');
+        
         const fileLink = document.createElement('a');
         fileLink.href = URL.createObjectURL(file);
         fileLink.download = file.name;
+        
+        // Create preview if the file is an image
+        if (file.type.startsWith('image/')) {
+          const filePreview = document.createElement('img');
+          filePreview.src = URL.createObjectURL(file);
+          fileItem.appendChild(filePreview);
+        }
+        
         fileLink.textContent = file.name;
         fileItem.appendChild(fileLink);
         fileListContainer.appendChild(fileItem);
